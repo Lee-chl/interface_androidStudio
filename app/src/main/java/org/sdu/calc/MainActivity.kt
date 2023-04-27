@@ -1,7 +1,9 @@
 package org.sdu.calc
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import org.sdu.calc.databinding.ActivityMainBinding
 
@@ -77,6 +79,19 @@ class MainActivity : AppCompatActivity() {
         binding.button1.setOnClickListener {v -> println("클릭됨")}
         //더더더 축약
         binding.button1.setOnClickListener { println("클릭됨")}
+
+//        //새로운 화면 불러오기
+//        binding.button2.setOnClickListener {
+//            layoutInflater.inflate(R.layout.part1, binding.container,true)
+//        }
+
+//        //다른 방법
+//        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//        layoutInflater.inflate(R.layout.part1, binding.container,true)
+
+        //또 다른 방법
+        val inflater = LayoutInflater.from(applicationContext)
+        layoutInflater.inflate(R.layout.part1, binding.container,true)
     }
 
     override fun onDestroy() {
