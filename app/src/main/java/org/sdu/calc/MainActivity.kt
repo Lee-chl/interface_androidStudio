@@ -2,6 +2,7 @@ package org.sdu.calc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import org.sdu.calc.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -51,7 +52,34 @@ class MainActivity : AppCompatActivity() {
             val res1 = calc2.subtract(39,10)
             binding.output.text = "추상클래스로부터 객체 만들어짐"
             binding.output.append("\n 빼기 결과 ${res1}")
-        }
 
+
+
+
+        }
+        //클래스로 정의해서 가져오기
+        val listener = MyClickListener()
+        binding.button1.setOnClickListener(listener)
+
+        //클래스 말고 여기서 객체 만들기
+        binding.button1.setOnClickListener(object: View.OnClickListener{
+            override fun onClick(p0: View?) {
+                println("클릭됨")
+            }
+        } )
+
+        //위에 코드 축약
+        binding.button1.setOnClickListener({v: View? -> println("클릭됨")})
+
+        //더 축약
+        binding.button1.setOnClickListener() {v: View? -> println("클릭됨")}
+        //더 더 축약
+        binding.button1.setOnClickListener {v -> println("클릭됨")}
+        //더더더 축약
+        binding.button1.setOnClickListener { println("클릭됨")}
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }
